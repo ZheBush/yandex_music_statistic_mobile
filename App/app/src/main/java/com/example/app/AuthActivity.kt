@@ -91,7 +91,7 @@ fun Auth() {
                     containerColor = Orange
                 ),
                 modifier = Modifier
-                    .padding(15.dp)
+                    .padding(30.dp)
                     .size(width = 100.dp, height = 50.dp)
             ) {
                 Text("Enter",

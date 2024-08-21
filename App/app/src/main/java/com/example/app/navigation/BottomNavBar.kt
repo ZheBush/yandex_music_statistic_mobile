@@ -1,22 +1,19 @@
 package com.example.app.navigation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.FlowRowScopeInstance.align
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,19 +21,15 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.app.R
 import com.example.app.ui.theme.Black
 import com.example.app.ui.theme.LightGray
 import com.example.app.ui.theme.Orange
 
 @Composable
-fun NavBar(navController: NavController) {
+fun BottomNavBar(navController: NavController) {
     NavigationBar(
         containerColor = Black,
-        contentColor = Orange,
-        modifier = Modifier
-            .statusBarsPadding()
-            .height(50.dp)
+        contentColor = Orange
     ) {
         val backStack by navController.currentBackStackEntryAsState()
         val currentRoute = backStack?.destination?.route
@@ -52,17 +45,27 @@ fun NavBar(navController: NavController) {
                         restoreState = true
                     } },
                 icon = {
-//                    Icon(
-//                        imageVector = navItem.image,
-//                        contentDescription = navItem.title)
-                       },
+                    Icon(
+                        imageVector = navItem.image,
+                        contentDescription = navItem.title
+                    )
+                },
                 label = {
                     Text(
                         text = navItem.title,
-                        fontSize = 18.sp,
+                        fontSize = 12.sp,
                         color = LightGray
                     )
-                }
+                },
+                colors = NavigationBarItemColors(
+                    disabledIconColor = LightGray,
+                    disabledTextColor = LightGray,
+                    selectedIconColor = Black,
+                    selectedTextColor = Orange,
+                    selectedIndicatorColor = Orange,
+                    unselectedIconColor = LightGray,
+                    unselectedTextColor = LightGray
+                ),
             )
         }
     }
@@ -83,5 +86,5 @@ fun UserBar() {
 @Composable
 fun NavBarPreview() {
     val navController = rememberNavController()
-    NavBar(navController)
+    BottomNavBar(navController)
 }

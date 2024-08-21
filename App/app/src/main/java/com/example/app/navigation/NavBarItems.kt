@@ -1,6 +1,7 @@
 package com.example.app.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Person
 import com.example.app.Home
@@ -15,7 +16,7 @@ object NavBarItems {
         ),
         BarItem(
             title = "Albums",
-            image = Icons.Default.MailOutline,
+            image = Icons.Default.List,
             route = "albums"
         )
     )

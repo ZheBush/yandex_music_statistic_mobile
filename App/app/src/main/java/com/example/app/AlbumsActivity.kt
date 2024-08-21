@@ -34,7 +34,7 @@ fun Albums() {
         modifier = Modifier
             .fillMaxSize()
             .background(color = AlmostBlack),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Albums", fontSize = 24.sp, color = Orange)
