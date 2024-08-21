@@ -1,5 +1,6 @@
 package com.example.app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,11 +25,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.app.ui.theme.AppTheme
-import com.example.app.ui.theme.DarkGray
+import com.example.app.ui.theme.AlmostBlack
 import com.example.app.ui.theme.DarkOrange
 import com.example.app.ui.theme.Gray
 import com.example.app.ui.theme.Orange
@@ -45,24 +47,25 @@ class AuthActivity : ComponentActivity() {
 
 @Composable
 fun Auth() {
+
     AppTheme {
         val userToken = remember {
             mutableStateOf("")
         }
+        val context = LocalContext.current
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(
-                    color = DarkGray
-                ),
+                .background(color = AlmostBlack),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
                 value = userToken.value,
-                label = {Text(
-                    "Token",
-                    color = Gray)},
+                placeholder = {
+                    Text(
+                        "Token",
+                        color = Gray)},
                 colors = TextFieldDefaults.colors(
                     unfocusedIndicatorColor = Orange
                 ),
@@ -76,10 +79,15 @@ fun Auth() {
                     ),
                 onValueChange = {newText -> userToken.value = newText}
             )
-            Button(onClick = { /*TODO*/ },
+            Button(
+                onClick = {
+                    context.startActivity(
+                        Intent(context, HomeActivity::class.java)
+                    )
+                },
                 shape = RoundedCornerShape(30.dp),
                 colors = ButtonDefaults.buttonColors(
-                    contentColor = DarkGray,
+                    contentColor = AlmostBlack,
                     containerColor = Orange
                 ),
                 modifier = Modifier
@@ -88,12 +96,13 @@ fun Auth() {
             ) {
                 Text("Enter",
                     fontSize = 15.sp,
-                    color = DarkGray)
+                    color = AlmostBlack)
             }
         }
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(bottom = 30.dp),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally

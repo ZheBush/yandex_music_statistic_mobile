@@ -8,56 +8,41 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.app.navigation.NavBar
-import com.example.app.navigation.Routes
+import androidx.compose.ui.unit.sp
 import com.example.app.ui.theme.AlmostBlack
+import com.example.app.ui.theme.DarkGray
+import com.example.app.ui.theme.Orange
 
-class HomeActivity : ComponentActivity() {
+class AlbumsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Home()
+            Albums()
         }
     }
 }
 
 @Composable
-fun Home() {
-    val navController = rememberNavController()
+fun Albums() {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = AlmostBlack),
-        verticalArrangement = Arrangement.Top,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        NavBar(navController)
-        NavHost(
-            navController = navController,
-            startDestination = Routes.Artists.route
-        ) {
-            composable(route = Routes.Artists.route) {
-                Artists()
-            }
-            composable(route = Routes.Albums.route) {
-                Albums()
-            }
-        }
+        Text("Albums", fontSize = 24.sp, color = Orange)
     }
 }
 
-
-
-@Preview(showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
-fun HomePreview() {
-    Home()
+fun AlbumsPreview() {
+    Albums()
 }
