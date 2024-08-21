@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_artists">ArtistsActivity</string>
+    <string name="title_activity_albums">AlbumsActivity</string>
+    <string name="title_activity_account">AccountActivity</string>
+</resources>
